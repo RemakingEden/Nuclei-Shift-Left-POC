@@ -43,4 +43,14 @@ describe("Tests with complete DB", () => {
         });
 
     });
+
+    describe("Tests with DELETE", () => {
+
+        it("Add a new plant", async () => {
+            const res = await request(app).delete("/api/plants/1");
+            expect(res.statusCode).toEqual(204);
+            // Needs a db check to check delete went correctly
+        });
+
+    });
 });

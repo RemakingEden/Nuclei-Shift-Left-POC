@@ -56,20 +56,20 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },
 
-    // delete(req, res) {
-    //     return Student
-    //         .findByPk(req.params.id)
-    //         .then(student => {
-    //             if (!student) {
-    //                 return res.status(400).send({
-    //                     message: 'Student Not Found',
-    //                 });
-    //             }
-    //             return student
-    //                 .destroy()
-    //                 .then(() => res.status(204).send())
-    //                 .catch((error) => res.status(400).send(error));
-    //         })
-    //         .catch((error) => res.status(400).send(error));
-    // },
+    delete(req, res) {
+        return Plants
+            .findByPk(req.params.id)
+            .then(plants => {
+                if (!plants) {
+                    return res.status(400).send({
+                        message: 'Plant Not Found',
+                    });
+                }
+                return plants
+                    .destroy()
+                    .then(() => res.status(204).send())
+                    .catch((error) => res.status(400).send(error));
+            })
+            .catch((error) => res.status(400).send(error));
+    },
 };

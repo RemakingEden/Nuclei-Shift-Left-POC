@@ -10,8 +10,25 @@ Ensure you have [Node & NPM](https://docs.npmjs.com/downloading-and-installing-n
 npm install
 ```
 
+```bash
+docker-compose up -d
+```
+
 ## Usage
 See the package.json for all available commands
+
+```bash
+# Set up the database
+
+# Create the sb
+npm db:create
+
+# Set up the tables
+npm migrate
+
+# Set up some very basic seeded data 
+npm seed
+```
 
 ```bash
 # General server use

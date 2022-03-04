@@ -1,5 +1,6 @@
 const request = require("supertest");
 const app = require("../../app");
+const {toMatchSnapshot} = require('jest-snapshot');
 
 describe("Tests with complete DB", () => {
 
@@ -8,6 +9,14 @@ describe("Tests with complete DB", () => {
         it("Get list of plants", async () => {
             const res = await request(app).get("/api/plants");
             expect(res.statusCode).toEqual(200);
+            expect(res.body).toMatchSnapshot([{
+                createdAt: expect.any(String),
+                updatedAt: expect.any(String)
+            },
+            {
+                createdAt: expect.any(String),
+                updatedAt: expect.any(String)
+            }]);
         });
 
     });
@@ -23,6 +32,10 @@ describe("Tests with complete DB", () => {
                 "season": false
             });
             expect(res.statusCode).toEqual(201);
+            expect(res.body).toMatchSnapshot({
+                createdAt: expect.any(String),
+                updatedAt: expect.any(String)
+            });
             // Needs a db check to check post went correctly
         });
 
@@ -30,15 +43,18 @@ describe("Tests with complete DB", () => {
 
     describe("Tests with PUT", () => {
 
-        it("Add a new plant", async () => {
+        it("Edit a plant", async () => {
             const res = await request(app).put("/api/plants/1")
             .send({
                 "species": "Cactus",
                 "colour": "Purple",
-                "size": "L",
-                "season": true
+                "season": true,
             });
             expect(res.statusCode).toEqual(200);
+            expect(res.body).toMatchSnapshot({
+                createdAt: expect.any(String),
+                updatedAt: expect.any(String)
+            });
             // Needs a db check to check put went correctly
         });
 
@@ -46,7 +62,7 @@ describe("Tests with complete DB", () => {
 
     describe("Tests with DELETE", () => {
 
-        it("Add a new plant", async () => {
+        it("Delete a plant", async () => {
             const res = await request(app).delete("/api/plants/1");
             expect(res.statusCode).toEqual(204);
             // Needs a db check to check delete went correctly

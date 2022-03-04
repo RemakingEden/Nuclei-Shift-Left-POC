@@ -10,7 +10,6 @@
     "seed": "npx sequelize-cli db:seed:all",
     "seed:reset": "npx sequelize-cli db:seed:undo && npm run seed",
     "db:drop": "npx sequelize-cli db:drop",
-
     "start:test": "cross-env NODE_ENV=test nodemon ./bin/www",
     "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create",
     "migrate:test": "cross-env NODE_ENV=test npx sequelize-cli db:migrate",
@@ -30,6 +29,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jest": "^27.5.1",
+    "jest-snapshot": "^27.5.1",
     "morgan": "~1.9.1",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",

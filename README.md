@@ -41,6 +41,11 @@ curl localhost:3000/api/plants
 
 # returns a specific plant
 curl localhost:3000/api/plants/1
+
+# Adds a plant to the db
+curl -X POST localhost:3000/api/plants\
+    -H 'Content-Type: application/json'\
+   -d '{"species": "Boston Fern","colour": "Green","size": "S","season": true}'
 ```
 ```bash
 # Using the test suite

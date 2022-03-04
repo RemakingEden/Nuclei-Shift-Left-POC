@@ -46,6 +46,11 @@ curl localhost:3000/api/plants/1
 curl -X POST localhost:3000/api/plants\
     -H 'Content-Type: application/json'\
    -d '{"species": "Boston Fern","colour": "Green","size": "S","season": true}'
+
+# Update a plant in the db
+curl -X PUT localhost:3000/api/plants/1\
+    -H 'Content-Type: application/json'\
+   -d '{"species": "Cactus","colour": "Purple","size": "L","season": false}'
 ```
 ```bash
 # Using the test suite

@@ -11,5 +11,6 @@ router.get('/', function(req, res, next) {
 router.get('/api/plants', plantsController.list);
 router.get('/api/plants/:id', plantsController.getById);
 router.post('/api/plants', plantsController.add);
+router.put('/api/plants/:id', plantsController.update);
 
 module.exports = router;

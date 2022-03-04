@@ -34,32 +34,27 @@ module.exports = {
             .catch((error) => res.status(400).send(error));
     },
 
-    // update(req, res) {
-    //     return Student
-    //         .findByPk(req.params.id, {
-    //             include: [{
-    //                 model: Classroom,
-    //                 as: 'classroom'
-    //             }, {
-    //                 model: Course,
-    //                 as: 'courses'
-    //             }],
-    //         })
-    //         .then(student => {
-    //             if (!student) {
-    //                 return res.status(404).send({
-    //                     message: 'Student Not Found',
-    //                 });
-    //             }
-    //             return student
-    //                 .update({
-    //                     student_name: req.body.student_name || student.student_name,
-    //                 })
-    //                 .then(() => res.status(200).send(student))
-    //                 .catch((error) => res.status(400).send(error));
-    //         })
-    //         .catch((error) => res.status(400).send(error));
-    // },
+    update(req, res) {
+        return Plants
+            .findByPk(req.params.id)
+            .then(plants => {
+                if (!plants) {
+                    return res.status(404).send({
+                        message: 'Plant Not Found',
+                    });
+                }
+                return plants
+                    .update({
+                        species: req.body.species || plants.species,
+                        colour: req.body.colour || plants.colour,
+                        size: req.body.size || plants.size,
+                        season: req.body.season || plants.season,
+                    })
+                    .then(() => res.status(200).send(plants))
+                    .catch((error) => res.status(400).send(error));
+            })
+            .catch((error) => res.status(400).send(error));
+    },
 
     // delete(req, res) {
     //     return Student

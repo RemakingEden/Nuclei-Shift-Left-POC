@@ -51,10 +51,21 @@ curl -X POST localhost:3000/api/plants\
 curl -X PUT localhost:3000/api/plants/1\
     -H 'Content-Type: application/json'\
    -d '{"species": "Cactus","colour": "Purple","size": "L","season": false}'
+
+# Delete a plant in the db
+curl -X DELETE localhost:3000/api/plants/1
 ```
 ```bash
 # Using the test suite
+
+# Run all tests
 npm test
+
+# Update the snapshots
+npm test -- -u
+
+# Start Jest in interactive watch mode
+npm test -- --watch
 ```
 
 ## Contributing

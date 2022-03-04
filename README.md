@@ -21,13 +21,13 @@ See the package.json for all available commands
 # Set up the database
 
 # Create the sb
-npm db:create
+npm run db:create
 
 # Set up the tables
-npm migrate
+npm run migrate
 
 # Set up some very basic seeded data 
-npm seed
+npm run seed
 ```
 
 ```bash

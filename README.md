@@ -1,4 +1,4 @@
-# RemakingEden in Express/Postgres/Jest/Supertest
+# RemakingEden in Express/Postgres/Sequelize/Jest/Supertest
 
 RemakingEden is a mock plant shop. It is an example of a very basic REST API with integration tests. My hope is to make a test framework that can be scaled.
 

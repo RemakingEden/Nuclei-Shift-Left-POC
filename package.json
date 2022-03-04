@@ -19,7 +19,7 @@
     "seed:reset:test": "cross-env NODE_ENV=test npx sequelize-cli db:seed:undo && npm run seed",
     "db:drop:test": "cross-env NODE_ENV=test npx sequelize-cli db:drop",
     "pretest": "cross-env NODE_ENV=test npm run db:drop:test && npm run db:create:test && npm run migrate:test && npm run seed:test",
-    "test": "jest",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
     "posttest": "cross-env NODE_ENV=test npm run db:drop:test"
   },
   "dependencies": {

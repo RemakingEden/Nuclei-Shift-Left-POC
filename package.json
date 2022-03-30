@@ -19,7 +19,11 @@
     "db:drop:test": "cross-env NODE_ENV=test npx sequelize-cli db:drop",
     "pretest": "cross-env NODE_ENV=test npm run db:drop:test && npm run db:create:test && npm run migrate:test && npm run seed:test",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "posttest": "cross-env NODE_ENV=test npm run db:drop:test"
+    "posttest": "cross-env NODE_ENV=test npm run db:drop:test",
+    "db:create:ci": "cross-env NODE_ENV=ci npx sequelize-cli db:create",
+    "migrate:ci": "cross-env NODE_ENV=ci npx sequelize-cli db:migrate",
+    "seed:ci": "cross-env NODE_ENV=ci npx sequelize-cli db:seed:all",
+    "test:ci": "npm run db:create:ci && npm run migrate:ci && npm run seed:ci && cross-env NODE_ENV=ci jest --testTimeout=10000"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -37,5 +41,13 @@
     "sequelize-cli": "^6.4.1",
     "supertest": "^6.2.2",
     "ts-node": "^10.6.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "audit-ci": "^6.1.2",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }

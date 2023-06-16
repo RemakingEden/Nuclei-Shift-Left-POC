@@ -11,10 +11,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: cycodelabs/cimon-action@v0
+      - name: Run Cimon
+        uses: cycodelabs/cimon-action@v0
         with:
           client-id: ${{ secrets.CIMON_CLIENT_ID }}
           secret: ${{ secrets.CIMON_SECRET }}
+          prevent: true
+          allowed-hosts: >
+            registry.npmjs.org
       - uses: actions/checkout@v3
       - name: Install npm packages
         run: npm ci
@@ -22,10 +26,14 @@ jobs:
   static-analysis:
     runs-on: ubuntu-latest
     steps:
-      - uses: cycodelabs/cimon-action@v0
+      - name: Run Cimon
+        uses: cycodelabs/cimon-action@v0
         with:
           client-id: ${{ secrets.CIMON_CLIENT_ID }}
           secret: ${{ secrets.CIMON_SECRET }}
+          prevent: true
+          allowed-hosts: >
+            registry.npmjs.org
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
@@ -41,10 +49,14 @@ jobs:
   sca:
     runs-on: ubuntu-latest
     steps:
-      - uses: cycodelabs/cimon-action@v0
+      - name: Run Cimon
+        uses: cycodelabs/cimon-action@v0
         with:
           client-id: ${{ secrets.CIMON_CLIENT_ID }}
           secret: ${{ secrets.CIMON_SECRET }}
+          prevent: true
+          allowed-hosts: >
+            registry.npmjs.org
       - uses: actions/checkout@v3
         with:
           fetch-depth: '0'
@@ -83,10 +95,14 @@ jobs:
         ports:
           - 5432:5432
     steps:
-      - uses: cycodelabs/cimon-action@v0
+      - name: Run Cimon
+        uses: cycodelabs/cimon-action@v0
         with:
           client-id: ${{ secrets.CIMON_CLIENT_ID }}
           secret: ${{ secrets.CIMON_SECRET }}
+          prevent: true
+          allowed-hosts: >
+            registry.npmjs.org
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:

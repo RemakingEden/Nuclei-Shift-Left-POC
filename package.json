@@ -35,7 +35,7 @@
     "jest": "^28.1.0",
     "jest-snapshot": "^29.5.0",
     "morgan": "~1.10.0",
-    "pg": "^8.7.3",
+    "pg": "^8.11.2",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.32.0",
     "sequelize-cli": "^6.6.1",

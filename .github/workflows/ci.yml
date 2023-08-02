@@ -10,6 +10,20 @@ on:
 jobs:
   DAST:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: remakingeden
+          PGDATA: /data/remakingeden
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
     steps:
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
@@ -20,5 +34,11 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install npm packages
         run: npm ci
+      - name: Start server
+        run: npm run start:ci
       - name: Run Nuclei
-        run: echo "Nuclei is not yet setup"
+        uses: projectdiscovery/nuclei-action@main
+        with:
+          target: http://localhost:3000/api/
+          github-report: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -8,32 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  DAST:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Cimon
-        uses: cycodelabs/cimon-action@v0
-        with:
-          client-id: ${{ secrets.CIMON_CLIENT_ID }}
-          secret: ${{ secrets.CIMON_SECRET }}
-          prevent: true
-          allowed-hosts: >
-            registry.npmjs.org
-      - uses: actions/checkout@v3
-      - name: Install npm packages
-        run: npm ci
-
-  static-analysis:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Cimon
-        uses: cycodelabs/cimon-action@v0
-        with:
-          client-id: ${{ secrets.CIMON_CLIENT_ID }}
-          secret: ${{ secrets.CIMON_SECRET }}
-          prevent: true
-          allowed-hosts: >
-            registry.npmjs.org
       - uses: actions/checkout@v3
       - uses: actions/cache@v3
         with:
@@ -43,77 +20,5 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install npm packages
         run: npm ci
-      - name: lint
-        run: npx eslint --color .
-
-  sca:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Cimon
-        uses: cycodelabs/cimon-action@v0
-        with:
-          client-id: ${{ secrets.CIMON_CLIENT_ID }}
-          secret: ${{ secrets.CIMON_SECRET }}
-          prevent: true
-          allowed-hosts: >
-            registry.npmjs.org
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: '0'
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install npm packages
-        run: npm ci
-      - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-          extra_args: --debug --only-verified
-      - name: Dependency scanning
-        run: npx audit-ci --high
-
-  test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: remakingeden
-          PGDATA: /data/remakingeden
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
-    steps:
-      - name: Run Cimon
-        uses: cycodelabs/cimon-action@v0
-        with:
-          client-id: ${{ secrets.CIMON_CLIENT_ID }}
-          secret: ${{ secrets.CIMON_SECRET }}
-          prevent: true
-          allowed-hosts: >
-            registry.npmjs.org
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install npm packages
-        run: npm ci
-      - name: Start integration tests
-        run: npm run test:ci
-      - name: Start unit tests
-        run: echo "No unit tests available currently"
-
+      - name: Run Nuclei
+        run: echo "Nuclei is not yet setup"

@@ -1,7 +1,18 @@
-# Eden in Express/Postgres/Jest/Supertest
+# Shift Left Nuclei POC
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/jpb06/jest-badges-action)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=RemakingEden_Eden-in-Express-Postgres-Sequelize-Jest-Supertest&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=RemakingEden_Eden-in-Express-Postgres-Sequelize-Jest-Supertest)
+
+This is a clone of a REST API I created to understand Nuclei a little more, the original repo is [here](https://github.com/RemakingEden/Eden-in-Express-Postgres-Sequelize-Jest-Supertest). 
+
+In this repo I have implemented [Nuclei](https://github.com/projectdiscovery/nuclei) the really interesting DAST (Dynamic Application Security Testing) tool.
+
+I have often looked at DAST tools and saw how complicated they can be with shift left ideas. At their core they often want to be ran in as realistic an environment as possible but running these in pre-prod/prod can lead to a weird roll back situation needed. Although this could be very useful to test how the application is deployed etc.
+
+In this repo I want to look at taking Nuclei and DAST to as early a point as possible and seeing how much value can be gained. I will be entirely hand writing templates to look for common security misconfigurations in an API.
+
+Below is the content from the origin README detailing how to use the REST API.
+
+---
 
 Eden is a mock plant shop. It is an example of a very basic REST API with integration tests. My hope is to make a test framework that can be scaled.
 

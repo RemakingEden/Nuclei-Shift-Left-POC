@@ -34,7 +34,7 @@ See the package.json for all available commands
 ```bash
 # Set up the database
 
-# Create the sb
+# Create the db
 npm run db:create
 
 # Set up the tables

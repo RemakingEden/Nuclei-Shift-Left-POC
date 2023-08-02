@@ -35,7 +35,7 @@ jobs:
       - name: Install npm packages
         run: npm ci
       - name: Start server
-        run: npm run start:ci
+        run: npm run start:ci &
       - name: Run Nuclei
         uses: projectdiscovery/nuclei-action@main
         with:

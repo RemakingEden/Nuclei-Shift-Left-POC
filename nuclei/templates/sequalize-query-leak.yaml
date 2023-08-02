@@ -1,0 +1,24 @@
+id: sequalize-query-leak
+
+info:
+  name: Sequalize Query Leak
+  author: RemakingEden
+  severity: low
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/plants/{{randstr}}'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - "SequelizeDatabaseError"
+          - "22P02"
+        condition: and
+
+      - type: status
+        status:
+          - 400

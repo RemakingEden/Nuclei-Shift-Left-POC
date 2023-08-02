@@ -1,0 +1,23 @@
+id: restricted-endpoint-regular-users
+
+info:
+  name: Restricted Endpoint for Regular Users
+  description: We have a number of sensitive API endpoints that regular users should never be able to access. This checks these are resolving correctly.
+  author: RemakingEden
+  severity: high
+
+http:
+  - method: GET
+    path:
+      - '{{BaseURL}}/users'
+      - '{{BaseURL}}/admin'
+  - method: POST
+    path:
+      - '{{BaseURL}}/users'
+      - '{{BaseURL}}/admin'
+
+    matchers:
+      - type: status
+        negative: true
+        status:
+          - 404

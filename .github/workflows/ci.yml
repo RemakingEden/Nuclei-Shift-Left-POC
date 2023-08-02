@@ -40,3 +40,4 @@ jobs:
         uses: projectdiscovery/nuclei-action@main
         with:
           target: http://localhost:3000/api/
+          templates: nuclei/templates

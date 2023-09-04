@@ -2,7 +2,9 @@
 
 [![Open in Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/jpb06/jest-badges-action)
 
-This is a clone of a REST API I created to understand Nuclei a little more, the original repo is [here](https://github.com/RemakingEden/Eden-in-Express-Postgres-Sequelize-Jest-Supertest). 
+This repo accompanies a blog post which you can find here [Shifting Left with Nuclei: A Tester's Experience](https://jsparkes.com/shifting-left-with-nuclei/).
+
+It is a clone of a REST API I created with the addition of Nuclei to try to understand it a little more, the original repo is [here](https://github.com/RemakingEden/Eden-in-Express-Postgres-Sequelize-Jest-Supertest). 
 
 In this repo I have implemented [Nuclei](https://github.com/projectdiscovery/nuclei) the really interesting DAST (Dynamic Application Security Testing) tool.
 
